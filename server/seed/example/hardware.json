@@ -1,0 +1,662 @@
+{
+ "rev": 6,
+ "setups": [
+  {
+   "id": "hotas",
+   "name": "Custom HOTAS",
+   "layers": [
+    {
+     "id": "n",
+     "name": "Normal"
+    },
+    {
+     "id": "s",
+     "name": "Shift"
+    }
+   ],
+   "devices": [
+    {
+     "id": "stick",
+     "name": "Stick",
+     "photo": "stick-clean.png",
+     "controls": [
+      {
+       "id": "trim-hat",
+       "name": "Trim hat",
+       "x": 58,
+       "y": 16,
+       "label": {
+        "side": "right",
+        "y": 16
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "left"
+        },
+        {
+         "id": "right"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "small-btn",
+       "name": "Small button",
+       "x": 58,
+       "y": 28,
+       "label": {
+        "side": "right",
+        "y": 28
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "sensor-hat",
+       "name": "Castle switch",
+       "x": 44,
+       "y": 30,
+       "label": {
+        "side": "left",
+        "y": 30
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "left"
+        },
+        {
+         "id": "right"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "trigger",
+       "name": "Trigger",
+       "x": 43,
+       "y": 45,
+       "label": {
+        "side": "right",
+        "y": 45
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "rocker",
+       "name": "Lower rocker",
+       "x": 46,
+       "y": 59,
+       "label": {
+        "side": "right",
+        "y": 59
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "pinky",
+       "name": "Red pinky button",
+       "x": 54,
+       "y": 67,
+       "label": {
+        "side": "right",
+        "y": 67
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "pickle",
+       "name": "Red top button",
+       "x": 24,
+       "y": 43,
+       "label": {
+        "side": "left",
+        "y": 43
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "small-lever",
+       "name": "Small lever",
+       "x": 43,
+       "y": 52,
+       "label": {
+        "side": "left",
+        "y": 52
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "base-lever",
+       "name": "Base flip lever",
+       "x": 32,
+       "y": 65,
+       "label": {
+        "side": "left",
+        "y": 65
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "throttle-side",
+     "name": "Throttle side",
+     "photo": "throttle-side-clean.png",
+     "controls": [
+      {
+       "id": "ts-wheel",
+       "name": "Grey wheel",
+       "x": 53,
+       "y": 37,
+       "label": {
+        "side": "left",
+        "y": 37
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "1"
+        },
+        {
+         "id": "2"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "ts-stick",
+       "name": "Mini stick",
+       "x": 52,
+       "y": 54,
+       "label": {
+        "side": "left",
+        "y": 54
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "1"
+        },
+        {
+         "id": "2"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "ts-rocker",
+       "name": "Black rocker",
+       "x": 54,
+       "y": 70,
+       "label": {
+        "side": "left",
+        "y": 70
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "1"
+        },
+        {
+         "id": "2"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "ts-lever",
+       "name": "White lever",
+       "x": 61,
+       "y": 81,
+       "label": {
+        "side": "left",
+        "y": 81
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "1"
+        },
+        {
+         "id": "2"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "throttle-top",
+     "name": "Throttle top",
+     "photo": "throttle-top-clean.png",
+     "controls": [
+      {
+       "id": "tt-lever",
+       "name": "Black lever",
+       "x": 17.5,
+       "y": 35,
+       "label": {
+        "side": "left",
+        "y": 35
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "tt-wheel",
+       "name": "Knurled wheel",
+       "x": 20,
+       "y": 68,
+       "label": {
+        "side": "left",
+        "y": 68
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "tt-red",
+       "name": "Red button",
+       "x": 34,
+       "y": 64,
+       "label": {
+        "side": "left",
+        "y": 64
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "press"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "tt-hat",
+       "name": "White hat",
+       "x": 62,
+       "y": 63,
+       "label": {
+        "side": "right",
+        "y": 63
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "left"
+        },
+        {
+         "id": "right"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "tt-stick",
+       "name": "Black mini stick",
+       "x": 76,
+       "y": 63,
+       "label": {
+        "side": "right",
+        "y": 63
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "left"
+        },
+        {
+         "id": "right"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "button-box",
+     "name": "Button box",
+     "photo": "button-box-clean.png",
+     "controls": [
+      {
+       "id": "bb-knob-c",
+       "name": "Center knob",
+       "x": 63,
+       "y": 43,
+       "label": {
+        "side": "top",
+        "y": 43
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "cw"
+        },
+        {
+         "id": "press"
+        },
+        {
+         "id": "ccw"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "bb-knob-l",
+       "name": "Left knob",
+       "x": 48,
+       "y": 42,
+       "label": {
+        "side": "top",
+        "y": 42
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "cw"
+        },
+        {
+         "id": "press"
+        },
+        {
+         "id": "ccw"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "bb-side",
+       "name": "Side toggle",
+       "x": 9,
+       "y": 39,
+       "label": {
+        "side": "left",
+        "y": 39
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "bb-t1",
+       "name": "Toggle 1",
+       "x": 39,
+       "y": 64,
+       "label": {
+        "side": "bottom",
+        "y": 64
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "bb-t2",
+       "name": "Toggle 2",
+       "x": 54,
+       "y": 65,
+       "label": {
+        "side": "bottom",
+        "y": 65
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "bb-knob-r",
+       "name": "Right knob",
+       "x": 79,
+       "y": 44,
+       "label": {
+        "side": "top",
+        "y": 44
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "cw"
+        },
+        {
+         "id": "press"
+        },
+        {
+         "id": "ccw"
+        }
+       ],
+       "layers": [
+        "n",
+        "s"
+       ]
+      },
+      {
+       "id": "bb-t4",
+       "name": "Toggle 4",
+       "x": 85,
+       "y": 65,
+       "label": {
+        "side": "bottom",
+        "y": 65
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "bb-t3",
+       "name": "Toggle 3",
+       "x": 70,
+       "y": 65,
+       "label": {
+        "side": "bottom",
+        "y": 65
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      },
+      {
+       "id": "bb-red",
+       "name": "Gear lever",
+       "x": 27,
+       "y": 52,
+       "label": {
+        "side": "left",
+        "y": 52
+       },
+       "line": true,
+       "slots": [
+        {
+         "id": "up"
+        },
+        {
+         "id": "down"
+        }
+       ],
+       "layers": [
+        "n"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

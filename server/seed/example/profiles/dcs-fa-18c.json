@@ -1,0 +1,164 @@
+{
+ "id": "dcs-fa-18c",
+ "sim": "DCS",
+ "name": "F/A-18C Hornet",
+ "setup": "hotas",
+ "color": "#A4C2F4",
+ "bindings": {
+  "trim-hat": {
+   "up": {
+    "n": "Nose DN"
+   },
+   "left": {
+    "n": "Nose LWD"
+   },
+   "right": {
+    "n": "Nose RWD"
+   },
+   "down": {
+    "n": "Nose UP"
+   }
+  },
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "small-btn": {
+   "press": {
+    "n": "TDC Depress"
+   }
+  },
+  "sensor-hat": {
+   "up": {
+    "n": "Sensor Sel Up",
+    "s": "CHECK"
+   },
+   "left": {
+    "n": "Sensor Sel L",
+    "s": "Select Sparrow"
+   },
+   "right": {
+    "n": "Sensor Sel R",
+    "s": "Select AMRAAM"
+   },
+   "down": {
+    "n": "Sensor Sel DN",
+    "s": "Sensor Sel Depress"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Next Channel"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Prev Channel"
+   }
+  },
+  "ts-rocker": {
+   "1": {
+    "n": "Airbrake Up (Hold)",
+    "s": "FLIR FOV"
+   },
+   "2": {
+    "n": "Airbrake DN",
+    "s": "Cage / Uncage"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Pickle"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Fire"
+   }
+  },
+  "ts-lever": {
+   "1": {
+    "n": "Dispenser Prog"
+   },
+   "2": {
+    "n": "Dispenser 5"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "TDC UP"
+   },
+   "left": {
+    "n": "TDC L",
+    "s": "Engine 1 Fuel"
+   },
+   "right": {
+    "n": "TDC R",
+    "s": "Engine 2 Fuel"
+   },
+   "down": {
+    "n": "TDC DN",
+    "s": "TDC Depress"
+   }
+  },
+  "small-lever": {
+   "press": {
+    "n": "NWS/Undesignate"
+   }
+  },
+  "rocker": {
+   "press": {
+    "n": "Select Guns",
+    "s": "Select Sidewinder"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "n": "Master ARM",
+    "s": "EMERG JETT"
+   }
+  },
+  "tt-stick": {
+   "up": {
+    "n": "Flaps UP"
+   },
+   "left": {
+    "n": "Call the ball"
+   },
+   "down": {
+    "n": "Flaps DN"
+   }
+  },
+  "tt-wheel": {
+   "up": {
+    "n": "Radar Antenna DN"
+   },
+   "down": {
+    "n": "Radar Antenna UP"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": []
+}

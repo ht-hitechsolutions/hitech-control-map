@@ -1,0 +1,143 @@
+{
+ "id": "il2",
+ "sim": "IL-2",
+ "name": "IL-2 Great Battles",
+ "setup": "hotas",
+ "color": "#A2C4C9",
+ "bindings": {
+  "trim-hat": {
+   "up": {
+    "n": "Nose DN"
+   },
+   "left": {
+    "n": "Nose LWD"
+   },
+   "right": {
+    "n": "Nose RWD"
+   },
+   "down": {
+    "n": "Nose UP"
+   }
+  },
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "small-btn": {
+   "press": {
+    "n": "Trim Reset"
+   }
+  },
+  "sensor-hat": {
+   "up": {
+    "n": "Auto Level",
+    "s": "Select Rockets"
+   },
+   "right": {
+    "n": "Map",
+    "s": "Select Bombs"
+   },
+   "down": {
+    "n": "Statistics"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Ch 2"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Ch 1"
+   }
+  },
+  "ts-rocker": {
+   "1": {
+    "n": "Airbrake"
+   },
+   "2": {
+    "n": "Boost"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Fire Rockets/Bombs"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Fire All",
+    "s": "Fire Primary"
+   }
+  },
+  "ts-lever": {
+   "2": {
+    "n": "Supercharger Gear",
+    "s": "Auto Oil Radiator"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "Nav Lights"
+   },
+   "right": {
+    "n": "Fuel Button",
+    "s": "SRS Ch+"
+   },
+   "left": {
+    "s": "SRS Ch -"
+   },
+   "down": {
+    "n": "Green Flare"
+   }
+  },
+  "small-lever": {
+   "press": {
+    "n": "TailWheel Lock"
+   }
+  },
+  "base-lever": {
+   "press": {
+    "n": "Engine Start/Stop"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "n": "Canopy",
+    "s": "Radiator Close"
+   }
+  },
+  "tt-wheel": {
+   "up": {
+    "n": "Gunsight Dist +"
+   },
+   "down": {
+    "s": "Radiator Open",
+    "n": "Gunsight Dist -"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": []
+}

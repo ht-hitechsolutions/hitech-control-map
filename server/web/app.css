@@ -1,0 +1,123 @@
+@font-face { font-family: "Barlow Condensed"; font-weight: 500; font-display: swap; src: url(fonts/barlow-condensed-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url(fonts/barlow-condensed-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url(fonts/barlow-condensed-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url(fonts/barlow-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 500; font-display: swap; src: url(fonts/barlow-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url(fonts/barlow-latin-600-normal.woff2) format("woff2"); }
+
+:root {
+  /* cockpit instrument grey, stencil white, caution amber */
+  --panel: #22282c;
+  --panel-2: #2b3237;
+  --plate: #323a40;
+  --plate-edge: #46515a;
+  --ink: #edf1ee;
+  --muted: #8f9aa1;
+  --faint: #5d686f;
+  --amber: #f2b632;
+  --L1: #f2b632;
+  --L2: #5fd0e6;
+  --L3: #f07aa8;
+  --L4: #93e07c;
+  --accent: #8fb3d9;
+  --radius-plate: 6px;
+  --cond: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Barlow", system-ui, sans-serif;
+  color-scheme: dark;
+  /* Colours carry meaning here (yellow = shift), so keep them under Windows contrast themes */
+  forced-color-adjust: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--panel); color: var(--ink); font-family: var(--body); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+/* ---------- stage ---------- */
+.stage-host { position: relative; overflow: hidden; }
+.stage { position: absolute; transform-origin: 0 0; }
+.photo-plate {
+  position: absolute; border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 45%, #a3acb1 0%, #7b858b 55%, #545d63 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 18px 40px rgba(0,0,0,.35);
+}
+.photo { width: 100%; height: 100%; display: block; object-fit: contain; user-select: none; }
+.photo-plate.missing::after { content: attr(data-msg); white-space: pre-line; text-align: center; padding: 20px; position: absolute; inset: 0; display: grid; place-items: center; color: #1b2024; font-family: var(--cond); font-weight: 600; font-size: 28px; }
+.offline-bar { display: none; background: #e0473f; color: #fff; font-family: var(--cond); font-weight: 600; font-size: 20px; padding: 8px 16px; text-align: center; }
+.offline-bar.on { display: block; }
+.wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.wire { fill: none; stroke: #e0473f; stroke-width: 2.5; stroke-linejoin: round; opacity: .75; }
+.wire-dot { fill: #e0473f; stroke: #1b2024; stroke-width: 2; }
+.wire-dot.hot { fill: var(--amber); }
+.wire.hot { stroke: var(--amber); opacity: 1; stroke-width: 4; }
+
+.spot { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 3px solid transparent; }
+.spot.hot, .spot.sel { border-color: var(--amber); box-shadow: 0 0 0 4px rgba(242,182,50,.3), 0 0 24px rgba(242,182,50,.7); }
+.spot.edit { border: 3px solid var(--L2); background: rgba(95,208,230,.25); cursor: grab; }
+.spot.edit.sel { border-color: var(--amber); background: rgba(242,182,50,.35); }
+.anchor { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; background: var(--L3); transform: rotate(45deg); cursor: ns-resize; box-shadow: 0 0 0 2px #0006; }
+
+/* ---------- callout cards: label plates ---------- */
+.card {
+  position: absolute; background: var(--plate); border: 1px solid var(--plate-edge);
+  border-radius: var(--radius-plate); padding: 7px 10px 8px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.35);
+  transition: border-color .15s, box-shadow .15s;
+}
+.card::before { /* profile colour tab, like the tab colour in your sheet */
+  content: ""; position: absolute; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: var(--accent); left: -1px;
+}
+.card.side-left::before { left: auto; right: -1px; }
+.card.hot, .card.sel { border-color: var(--amber); box-shadow: 0 0 0 2px rgba(242,182,50,.35), 0 6px 18px rgba(0,0,0,.4); }
+.card-head { font-family: var(--cond); font-weight: 500; font-size: 15px; color: var(--muted); margin-bottom: 4px; letter-spacing: .01em; }
+.side-left .card-head { text-align: right; }
+
+.list { display: grid; gap: 4px; }
+.list .slot { display: grid; grid-template-columns: 22px 1fr; align-items: start; gap: 6px; }
+.side-left .list .slot { grid-template-columns: 1fr 22px; }
+.side-left .list .slot .g { order: 2; text-align: center; }
+.side-left .list .lines { text-align: right; }
+.slot .g { font-size: 13px; color: var(--faint); line-height: 24px; text-align: center; }
+
+.cross { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-areas: ". up ." "left press right" ". down ."; gap: 3px; text-align: center; }
+.cross .slot { position: relative; background: rgba(0,0,0,.18); border-radius: 4px; padding: 3px 4px; min-height: 30px; display: grid; align-content: center; }
+.cross .slot::after { content: none; }
+.cross .slot-up { grid-area: up; } .cross .slot-up::after { top: 1px; left: 50%; transform: translateX(-50%); }
+.cross .slot-down { grid-area: down; } .cross .slot-down::after { bottom: 0; left: 50%; transform: translateX(-50%); }
+.cross .slot-left { grid-area: left; } .cross .slot-left::after { left: 2px; top: 50%; transform: translateY(-50%); }
+.cross .slot-right { grid-area: right; } .cross .slot-right::after { right: 2px; top: 50%; transform: translateY(-50%); }
+.cross .slot-press { grid-area: press; background: transparent; }
+.cross .slot-press .g { line-height: 14px; font-size: 10px; }
+.cross .slot.empty { background: rgba(0,0,0,.08); }
+
+.ln { font-family: var(--cond); font-weight: 600; font-size: 21px; line-height: 1.1; padding: 1px 0; overflow-wrap: anywhere; }
+.cross .ln { font-size: 19px; }
+.ln.none { color: var(--faint); font-weight: 500; }
+.ln.L1 { color: var(--L1); } .ln.L2 { color: var(--L2); } .ln.L3 { color: var(--L3); } .ln.L4 { color: var(--L4); }
+.badge { display: inline-block; min-width: 16px; padding: 0 3px; margin-right: 5px; border-radius: 3px; font-size: 12px; line-height: 16px; vertical-align: 2px; text-align: center; background: currentColor; }
+.badge { color: inherit; }
+.ln .badge { -webkit-text-fill-color: var(--panel); }
+.side-left .ln .badge { margin: 0 0 0 5px; float: right; margin-top: 3px; }
+
+/* editable */
+.tx[contenteditable] { display: inline-block; min-width: 40px; border-radius: 3px; outline: none; cursor: text; }
+.tx[contenteditable]:hover { background: rgba(255,255,255,.06); }
+.tx[contenteditable]:focus { background: #11161a; box-shadow: 0 0 0 1px var(--amber); }
+.tx[contenteditable]:empty::before { content: attr(data-ph); color: var(--faint); font-weight: 500; font-size: .8em; }
+
+/* ---------- generic chrome ---------- */
+.seg { display: inline-flex; background: var(--panel-2); border-radius: 10px; padding: 3px; gap: 2px; }
+.seg button { border: 0; background: transparent; padding: 9px 16px; border-radius: 8px; font-family: var(--cond); font-weight: 600; font-size: 19px; color: var(--muted); white-space: nowrap; }
+.seg button[aria-pressed="true"] { background: var(--plate); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
+.seg button.lay[aria-pressed="true"] { box-shadow: inset 0 -2px 0 currentColor; }
+.btn { border: 1px solid var(--plate-edge); background: var(--plate); border-radius: 8px; padding: 8px 14px; font-weight: 600; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--amber); color: #1d1a10; border-color: transparent; }
+.btn.danger { color: #ff8f86; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; background: var(--accent); flex: none; }
+.photo-plate.missing .photo { visibility: hidden; }
+
+@media (forced-colors: active) {
+  .card, .btn, .seg, .tile, .res { border-color: #8f9aa1; }
+  :focus-visible { outline-color: #f2b632; }
+}

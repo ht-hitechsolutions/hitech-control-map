@@ -1,0 +1,169 @@
+{
+ "id": "dcs-f-5e",
+ "sim": "DCS",
+ "name": "F-5E",
+ "setup": "hotas",
+ "color": "#F4CCCC",
+ "bindings": {
+  "trim-hat": {
+   "up": {
+    "n": "Nose DN"
+   },
+   "left": {
+    "n": "Nose LWD"
+   },
+   "right": {
+    "n": "Nose RWD"
+   },
+   "down": {
+    "n": "Nose Up"
+   }
+  },
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "small-btn": {
+   "press": {
+    "n": "Aileron Limtr OFF"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Next Channel"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Prev Channel"
+   }
+  },
+  "sensor-hat": {
+   "left": {
+    "n": "Score Window"
+   },
+   "right": {
+    "n": "F1 Camera",
+    "s": "F10 Map"
+   },
+   "down": {
+    "n": "Dog/Res FWD"
+   }
+  },
+  "ts-rocker": {
+   "1": {
+    "n": "Airbrake DN (hold)",
+    "s": "Sight Cage"
+   },
+   "2": {
+    "n": "Airbrake UP (hold)",
+    "s": "Missile Uncage"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Release"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Fire"
+   }
+  },
+  "ts-lever": {
+   "1": {
+    "n": "Flare"
+   },
+   "2": {
+    "n": "Drag Chute"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "Nose Strut Extend",
+    "s": "Jett SW OFF"
+   },
+   "left": {
+    "n": "Radar STBY",
+    "s": "Engine 1 Fuel"
+   },
+   "right": {
+    "n": "Radar OPR",
+    "s": "Engine 2 Fuel"
+   },
+   "down": {
+    "n": "RWR Search",
+    "s": "Jett SW ALL PYL"
+   }
+  },
+  "small-lever": {
+   "press": {
+    "n": "Nosewheel Steer"
+   }
+  },
+  "rocker": {
+   "press": {
+    "n": "Dog/Res AFT",
+    "s": "Dog/Res PRESS"
+   }
+  },
+  "base-lever": {
+   "press": {
+    "n": "Gun Doors"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "n": "Guns Msls ARM",
+    "s": "Jett Button"
+   }
+  },
+  "tt-stick": {
+   "up": {
+    "n": "Flaps UP"
+   },
+   "left": {
+    "n": "Ext Stores SAFE"
+   },
+   "right": {
+    "n": "Ext Stores RKT"
+   },
+   "down": {
+    "n": "Flaps DN"
+   }
+  },
+  "tt-wheel": {
+   "up": {
+    "s": "Missil Volume UP",
+    "n": "Guns Msls Cover"
+   },
+   "down": {
+    "s": "Missil Volume DN",
+    "n": "Guns Msls OFF"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": []
+}

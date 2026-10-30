@@ -1,0 +1,192 @@
+{
+ "id": "dcs-f-4e",
+ "sim": "DCS",
+ "name": "F-4E",
+ "setup": "hotas",
+ "color": "#999999",
+ "bindings": {
+  "trim-hat": {
+   "up": {
+    "n": "Nose DN"
+   },
+   "left": {
+    "n": "Roll L"
+   },
+   "right": {
+    "n": "Roll R"
+   },
+   "down": {
+    "n": "Nose Up"
+   }
+  },
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "small-btn": {
+   "press": {
+    "n": "Jester V"
+   }
+  },
+  "sensor-hat": {
+   "up": {
+    "n": "Select Sparrow"
+   },
+   "left": {
+    "n": "Refuel"
+   },
+   "right": {
+    "n": "F1 Camera",
+    "s": "F10 Map"
+   },
+   "down": {
+    "n": "Jester A",
+    "s": "Jester Back"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Next Channel"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Prev Channel"
+   }
+  },
+  "ts-rocker": {
+   "1": {
+    "n": "Airbrake DN (hold)",
+    "s": "Cage"
+   },
+   "2": {
+    "n": "Airbrake UP",
+    "s": "Missile Uncage"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Bomb Release"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Fire"
+   }
+  },
+  "ts-lever": {
+   "1": {
+    "n": "Coutermeasure",
+    "s": "Refuel"
+   },
+   "2": {
+    "n": "Drag Chute Open",
+    "s": "Drag Chute Release"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "WPN Slew UP",
+    "s": "HUD Mode CW"
+   },
+   "left": {
+    "n": "WPN Slew L",
+    "s": "Engine 1 Idle"
+   },
+   "right": {
+    "n": "WPN Slew R",
+    "s": "Engine 2 Idle"
+   },
+   "down": {
+    "n": "WPN Slew DN",
+    "s": "HUD Mode CCW"
+   }
+  },
+  "small-lever": {
+   "press": {
+    "n": "Nosewheel Steer"
+   }
+  },
+  "rocker": {
+   "press": {
+    "n": "Select Gun",
+    "s": "Select Heat"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "n": "Master ARM",
+    "s": "EMERG JETT"
+   }
+  },
+  "tt-stick": {
+   "up": {
+    "n": "Flaps UP"
+   },
+   "down": {
+    "n": "Flaps DN"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-knob-c": {
+   "cw": {
+    "s": "Aural -",
+    "n": "HUD Brightness -"
+   },
+   "press": {
+    "s": "Aural +",
+    "n": "HUD Brightness +"
+   }
+  },
+  "bb-knob-r": {
+   "cw": {
+    "n": "HUD Depression -",
+    "s": "RWR Vol -"
+   },
+   "press": {
+    "n": "HUD Depression +",
+    "s": "RWR Vol +"
+   }
+  },
+  "bb-side": {
+   "up": {
+    "n": "Refuel"
+   },
+   "down": {
+    "n": "Canopy"
+   }
+  },
+  "bb-t2": {
+   "up": {
+    "n": "SHIFT 1"
+   }
+  },
+  "bb-t3": {
+   "up": {
+    "n": "SHIFT 2"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": []
+}

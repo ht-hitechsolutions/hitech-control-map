@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HiTech Control Map — Editor</title>
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="app.css">
+<style>
+  body { display: grid; grid-template-columns: 290px 1fr; height: 100vh; overflow: hidden; }
+  aside { background: #1b2024; border-right: 1px solid #000; display: flex; flex-direction: column; min-height: 0; }
+  .brand { padding: 16px 18px 12px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand h1 { font-family: var(--cond); font-weight: 700; font-size: 22px; margin: 0; line-height: 1.05; }
+  .logo { display: block; height: 58px; width: 58px; flex: none; }
+  .welcome-logo { margin-bottom: 14px; }
+  .welcome-logo .logo { height: 96px; width: 96px; }
+  .brand p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+  .quest { margin: 4px 14px 10px; padding: 10px 12px; border-radius: 8px; background: var(--panel-2); font-size: 13px; color: var(--muted); }
+  .quest code { display: block; font-family: var(--cond); font-weight: 600; font-size: 20px; color: var(--amber); user-select: all; margin-top: 2px; word-break: break-all; }
+  .plist { flex: 1; overflow: auto; padding: 0 8px 10px; }
+  .plist h3 { font-family: var(--cond); font-weight: 600; font-size: 15px; color: var(--muted); margin: 14px 10px 4px; }
+  .pitem { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px; border: 0; border-radius: 7px; background: transparent; text-align: left; font-size: 16px; }
+  .pitem:hover { background: var(--panel-2); }
+  .pitem[aria-current="true"] { background: var(--plate); box-shadow: inset 3px 0 0 var(--amber); }
+  .side-actions { padding: 10px 12px 14px; display: grid; gap: 8px; border-top: 1px solid #000; }
+  .side-actions .row { display: flex; gap: 8px; }
+  .side-actions .row .btn { flex: 1; font-size: 14px; padding: 7px 8px; }
+  .hwbtn[aria-pressed="true"] { border-color: var(--L2); color: var(--L2); }
+
+  .main { display: grid; grid-template-rows: auto auto 1fr auto; min-width: 0; min-height: 0; }
+  .bar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #000; background: #1f2529; }
+  .field { display: grid; gap: 3px; font-size: 12px; color: var(--muted); }
+  .field input, .field select { background: #12171a; border: 1px solid var(--plate-edge); border-radius: 6px; padding: 7px 9px; font-size: 15px; min-width: 0; }
+  .field input[type=color] { padding: 2px; width: 46px; height: 36px; }
+  .grow { flex: 1; }
+  .status { font-size: 13px; color: var(--muted); align-self: center; }
+  .status.err { color: #ff8f86; }
+  .tabs { padding: 10px 16px 0; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .hint { color: var(--muted); font-size: 13px; }
+  .work { display: grid; grid-template-columns: 1fr; min-height: 0; }
+  .work.hw { grid-template-columns: minmax(0,1fr) 340px; }
+  #stage { position: relative; min-height: 0; }
+  .inspector { border-left: 1px solid #000; background: #1f2529; overflow: auto; padding: 14px; display: grid; gap: 14px; align-content: start; }
+  .inspector h4 { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 19px; }
+  .inspector .field input:not([type=checkbox]), .inspector .field select { width: 100%; }
+  .inspector > * { min-width: 0; }
+  .checks input { margin: 0; flex: none; }
+  .box { background: var(--panel-2); border-radius: 8px; padding: 12px; display: grid; gap: 10px; }
+  .checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 10px; font-size: 14px; }
+  .checks label { display: flex; gap: 6px; align-items: center; }
+  .layer-row { display: flex; gap: 6px; }
+  .layer-row input { flex: 1; background: #12171a; border: 1px solid var(--plate-edge); border-radius: 6px; padding: 6px 8px; }
+  .notes { border-top: 1px solid #000; background: #1f2529; padding: 8px 16px 12px; }
+  .notes summary { cursor: pointer; color: var(--muted); font-size: 14px; padding: 4px 0; }
+  .note-row { display: grid; grid-template-columns: 220px 1fr auto; gap: 8px; margin-top: 6px; }
+  .note-row input { background: #12171a; border: 1px solid var(--plate-edge); border-radius: 6px; padding: 6px 9px; }
+  dialog { background: var(--panel-2); color: var(--ink); border: 1px solid var(--plate-edge); border-radius: 12px; padding: 20px; width: 420px; }
+  dialog::backdrop { background: rgba(0,0,0,.55); }
+  dialog form { display: grid; gap: 12px; }
+  dialog h3 { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 24px; }
+  dialog .field input, dialog .field select { width: 100%; }
+  dialog .actions { display: flex; justify-content: end; gap: 8px; }
+  dialog.welcome, dialog.settings { width: min(640px, 92vw); }
+  dialog.welcome h3 { font-size: 30px; }
+  dialog.welcome p { color: var(--muted); margin: 8px 0 18px; }
+  .choices { display: grid; gap: 12px; }
+  .choice { display: grid; gap: 4px; text-align: left; padding: 16px 18px; border-radius: 10px; border: 1px solid var(--plate-edge); background: var(--plate); }
+  .choice b { font-family: var(--cond); font-weight: 600; font-size: 22px; }
+  .choice span { color: var(--muted); font-size: 15px; }
+  .choice:hover { border-color: var(--amber); }
+  #settingsBody { display: grid; gap: 12px; }
+  #settingsBody .hint { margin: 0; }
+  #settingsBody h4 { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 20px; }
+  #settingsBody .box { gap: 8px; }
+  #fwRow { margin-top: 8px; color: var(--ink); }
+  .linkbtn { border: 0; background: none; color: var(--amber); padding: 0; text-decoration: underline; font-weight: 600; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .tut-foot { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--plate-edge); }
+  .tut-check { flex: 1; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; cursor: pointer; }
+  .tut-check input { width: 16px; height: 16px; accent-color: var(--amber); margin: 0; }
+  .tour { position: fixed; inset: 0; z-index: 50; }
+  .tour-hole { position: fixed; border-radius: 10px; box-shadow: 0 0 0 3px var(--amber), 0 0 0 9999px rgba(10,12,14,.72); transition: all .25s ease; pointer-events: none; }
+  .tour-card { position: fixed; width: 360px; background: var(--panel-2); border: 1px solid var(--plate-edge); border-radius: 12px; padding: 16px 18px 14px; box-shadow: 0 18px 40px rgba(0,0,0,.5); transition: left .25s ease, top .25s ease; }
+  .tour-count { color: var(--amber); font-family: var(--cond); font-weight: 600; font-size: 15px; }
+  .tour-title { margin: 2px 0 6px; font-family: var(--cond); font-weight: 600; font-size: 24px; }
+  .tour-text { margin: 0 0 14px; color: var(--ink); font-size: 15px; line-height: 1.45; }
+  .tour-actions { display: flex; gap: 8px; align-items: center; }
+  .tour-actions .grow { flex: 1; }
+  .tour-skip { border-color: transparent; background: transparent; color: var(--muted); padding-left: 0; }
+  @media (prefers-reduced-motion: reduce) { .tour-hole, .tour-card { transition: none; } }
+  .empty-msg { color: var(--muted); font-size: 18px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<aside>
+  <div class="brand"><img class="logo" src="logo.png" alt="HiTech Control Map"><div><h1>HiTech Control Map</h1><p>Developed by HiTech Solutions</p></div></div>
+  <div class="quest">On your phone, tablet or VR headset, go to<code id="questUrl">…</code><div id="fwRow" hidden>Another device can’t connect? <button class="linkbtn" id="fwBtn">Allow on my network</button></div></div>
+  <div class="plist" id="plist"></div>
+  <div class="side-actions">
+    <button class="btn" id="viewBtn">Open viewer</button>
+    <button class="btn primary" id="newBtn">New profile</button>
+    <button class="btn hwbtn" id="hwBtn" aria-pressed="false">Edit hardware layout</button>
+    <div class="row"><button class="btn" id="exportBtn" title="Save one file to share: the profile, its hardware layout and photos">Export profile</button><button class="btn" id="importBtn" title="Add a profile or layout someone shared">Import</button></div>
+    <div class="row"><button class="btn" id="backupBtn">Save backup</button><button class="btn" id="restoreBtn">Restore backup</button></div>
+    <button class="btn" id="settingsBtn">Settings</button>
+    <input type="file" id="restoreFile" accept=".json" hidden>
+    <input type="file" id="importFile" accept=".json" hidden>
+  </div>
+</aside>
+
+<section class="main">
+  <div class="bar" id="bar"></div>
+  <div class="tabs"><div class="seg" id="devices"></div><span class="hint" id="hint"></span></div>
+  <div class="work" id="work"><div id="stage" class="stage-host"></div></div>
+  <details class="notes" id="notesBox"><summary id="notesSum">Notes</summary><div id="notes"></div></details>
+</section>
+
+<dialog id="welcomeDlg" class="welcome">
+  <div class="welcome-logo"><img class="logo" src="logo.png" alt="HiTech Control Map"></div>
+  <h3>Welcome to HiTech Control Map</h3>
+  <p>See your controller bindings on a photo of your own hardware, on this PC, your phone or in VR. How do you want to start?</p>
+  <div class="choices">
+    <button class="choice" data-start="blank"><b>Start with my own controls</b><span>Add a photo of each device (stick, throttle, button box), then place its buttons. Takes a few minutes.</span></button>
+    <button class="choice" data-start="example"><b>Look at the example first</b><span>A finished custom HOTAS with eight aircraft. You can add your own controls next to it later.</span></button>
+  </div>
+</dialog>
+<dialog id="tutDlg" class="welcome">
+  <h3>Want a quick tour?</h3>
+  <p>A short step-by-step guide: setting up your own controls, typing your bindings, viewing them on any screen and sharing with others.</p>
+  <div class="tut-foot">
+    <label class="tut-check"><input type="checkbox" id="tutOff"> Don’t show again (the tutorial can be started in Settings)</label>
+    <button class="btn" id="tutClose">Not now</button>
+    <button class="btn primary" id="tutStart">Start the tutorial</button>
+  </div>
+</dialog>
+<dialog id="settingsDlg" class="settings">
+  <form method="dialog"><h3>Settings</h3><div id="settingsBody"></div><div class="actions"><button class="btn">Close</button></div></form>
+</dialog>
+<dialog id="newDlg">
+  <form method="dialog" id="newForm">
+    <h3>New profile</h3>
+    <label class="field">Aircraft or profile name<input name="name" required placeholder="e.g. F-16C Viper"></label>
+    <label class="field">Simulator<input name="sim" required list="sims" placeholder="e.g. DCS"></label>
+    <datalist id="sims"></datalist>
+    <label class="field">Start from<select name="from"></select></label>
+    <div class="actions"><button class="btn" value="cancel" formnovalidate>Cancel</button><button class="btn primary" value="ok">Create profile</button></div>
+  </form>
+</dialog>
+<script type="module" src="editor.js"></script>
+</body>
+</html>

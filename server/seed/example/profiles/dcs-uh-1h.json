@@ -1,0 +1,153 @@
+{
+ "id": "dcs-uh-1h",
+ "sim": "DCS",
+ "name": "UH-1H Huey",
+ "setup": "hotas",
+ "color": "#D9EAD3",
+ "bindings": {
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "sensor-hat": {
+   "up": {
+    "n": "Pilot Sight Toggle",
+    "s": "Pilot Sight UP"
+   },
+   "right": {
+    "n": "F1 Cam",
+    "s": "F10 Map"
+   },
+   "left": {
+    "s": "Trimmer Reset"
+   },
+   "down": {
+    "n": "Pilot Sight Switch",
+    "s": "Pilot Sight DN"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Next Channel"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Prev Channel"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Fire"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Radio PTT"
+   }
+  },
+  "ts-lever": {
+   "1": {
+    "n": "Flare Dispenser"
+   },
+   "2": {
+    "n": "Startup Engine"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "Searchlight Extend"
+   },
+   "left": {
+    "n": "Searchlight L",
+    "s": "Searchlight OFF"
+   },
+   "right": {
+    "n": "Searchlight R",
+    "s": "Searchlight ON"
+   },
+   "down": {
+    "n": "Searchlight Retract",
+    "s": "Searchlight Stow"
+   }
+  },
+  "rocker": {
+   "press": {
+    "n": "Armament Sel DN",
+    "s": "Armament Sel Up"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "n": "Throttle Stop SW",
+    "s": "NVG"
+   }
+  },
+  "tt-stick": {
+   "up": {
+    "n": "Ldg Light Extend"
+   },
+   "left": {
+    "n": "Ldg Light Stop"
+   },
+   "right": {
+    "n": "Ldg Light Switch"
+   },
+   "down": {
+    "n": "Ldg Light Retract"
+   }
+  },
+  "tt-wheel": {
+   "up": {
+    "s": "NVG Gain +"
+   },
+   "down": {
+    "s": "NVG Gain -"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": [
+  {
+   "label": "Show controls",
+   "value": "RCtrl + Enter"
+  },
+  {
+   "label": "AI ROE",
+   "value": "LCtrl + 2/3/4"
+  },
+  {
+   "label": "AI Burst",
+   "value": "LShift + 2/3/4"
+  },
+  {
+   "label": "Gunner door",
+   "value": "LAlt + 3/4"
+  },
+  {
+   "label": "Cockpit door",
+   "value": "RCtrl + C"
+  }
+ ]
+}

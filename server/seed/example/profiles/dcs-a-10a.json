@@ -1,0 +1,194 @@
+{
+ "id": "dcs-a-10a",
+ "sim": "DCS",
+ "name": "A-10A",
+ "setup": "hotas",
+ "color": "#B7B7B7",
+ "bindings": {
+  "trim-hat": {
+   "up": {
+    "n": "Nose DN"
+   },
+   "left": {
+    "n": "Nose LWD"
+   },
+   "right": {
+    "n": "Nose RWD"
+   },
+   "down": {
+    "n": "Nose UP"
+   }
+  },
+  "ts-wheel": {
+   "1": {
+    "n": "Zoom Default"
+   },
+   "2": {
+    "n": "Zoom In"
+   }
+  },
+  "small-btn": {
+   "press": {
+    "n": "Trim Reset"
+   }
+  },
+  "sensor-hat": {
+   "up": {
+    "n": "HUD A/A Mode",
+    "s": "Audible Alrm RST"
+   },
+   "left": {
+    "n": "HUD Nav Mode"
+   },
+   "right": {
+    "n": "F1 Camera",
+    "s": "F10 Map"
+   },
+   "down": {
+    "n": "HUD A/G Mode",
+    "s": "Release Mode"
+   }
+  },
+  "ts-stick": {
+   "1": {
+    "n": "SRS Window",
+    "s": "SRS Next Channel"
+   },
+   "2": {
+    "n": "PTT SRS",
+    "s": "SRS Prev Channel"
+   }
+  },
+  "ts-rocker": {
+   "1": {
+    "n": "Airbrake UP",
+    "s": "RWR/SPO Mode"
+   },
+   "2": {
+    "n": "Airbrake DN",
+    "s": "CCRP Steer Mode"
+   }
+  },
+  "pickle": {
+   "press": {
+    "n": "Release"
+   }
+  },
+  "trigger": {
+   "press": {
+    "n": "Fire"
+   }
+  },
+  "ts-lever": {
+   "1": {
+    "n": "Flare"
+   }
+  },
+  "tt-hat": {
+   "up": {
+    "n": "TGT UP",
+    "s": "TGT Center"
+   },
+   "left": {
+    "n": "TGT L",
+    "s": "Start L"
+   },
+   "right": {
+    "n": "TGT R",
+    "s": "Start R"
+   },
+   "down": {
+    "n": "TGT DN",
+    "s": "TGT Lock"
+   }
+  },
+  "rocker": {
+   "press": {
+    "n": "Cycle Weapons",
+    "s": "Select Cannon"
+   }
+  },
+  "base-lever": {
+   "press": {
+    "n": "ECM"
+   }
+  },
+  "pinky": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "tt-lever": {
+   "press": {
+    "s": "EMERG JETT"
+   }
+  },
+  "tt-stick": {
+   "up": {
+    "n": "Flaps UP"
+   },
+   "down": {
+    "n": "Flaps DN"
+   }
+  },
+  "tt-wheel": {
+   "up": {
+    "s": "Battery Switch",
+    "n": "RWR Vol +"
+   },
+   "down": {
+    "s": "Comm Rec Mode",
+    "n": "RWR Vol -"
+   }
+  },
+  "tt-red": {
+   "press": {
+    "n": "SHIFT"
+   }
+  },
+  "bb-knob-l": {
+   "cw": {
+    "n": "HUD Brightness +"
+   },
+   "press": {
+    "n": "HUD Color"
+   },
+   "ccw": {
+    "n": "HUD Brightness -"
+   }
+  },
+  "bb-knob-r": {
+   "cw": {
+    "n": "RWR Vol +"
+   },
+   "ccw": {
+    "n": "RWR Vol -"
+   }
+  },
+  "bb-t1": {
+   "up": {
+    "n": "Eng L ON"
+   },
+   "down": {
+    "n": "Eng L OFF"
+   }
+  },
+  "bb-t4": {
+   "up": {
+    "n": "Eng R ON"
+   },
+   "down": {
+    "n": "Eng R OFF"
+   }
+  },
+  "bb-red": {
+   "up": {
+    "n": "Gear Up"
+   },
+   "down": {
+    "n": "Gear Down"
+   }
+  }
+ },
+ "notes": []
+}

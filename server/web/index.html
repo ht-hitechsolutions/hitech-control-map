@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HiTech Control Map</title>
+<meta name="theme-color" content="#22282c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="app.css">
+<style>
+  body { display: grid; grid-template-rows: auto auto 1fr; height: 100vh; overflow: hidden; }
+  header { display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: #1b2024; border-bottom: 1px solid #000; flex-wrap: wrap; }
+  .who { display: flex; align-items: center; gap: 12px; border: 0; background: transparent; padding: 4px 10px 4px 0; text-align: left; min-width: 0; }
+  .who .bar { width: 6px; align-self: stretch; border-radius: 3px; background: var(--accent); }
+  .who .name { font-family: var(--cond); font-weight: 700; font-size: 30px; line-height: 1; white-space: nowrap; }
+  .who .sim { font-size: 14px; color: var(--muted); margin-top: 3px; }
+  .who:hover .name { color: #fff; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 4px; }
+  .grow { flex: 1; }
+  a.icon-btn { display: inline-flex; align-items: center; text-decoration: none; color: inherit; }
+  .icon-btn { border: 1px solid var(--plate-edge); background: var(--panel-2); border-radius: 10px; height: 46px; min-width: 46px; padding: 0 14px; font-family: var(--cond); font-weight: 600; font-size: 19px; }
+  .live { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .live i { width: 8px; height: 8px; border-radius: 50%; background: #5ac46a; }
+  .live.off i { background: #e0473f; }
+  main { position: relative; grid-row: 3; min-height: 0; }
+  .offline-bar { grid-row: 2; }
+  #stage { position: absolute; inset: 0; }
+
+  .overlay { position: fixed; inset: 0; background: rgba(15,18,20,.86); backdrop-filter: blur(4px); display: none; z-index: 10; overflow: auto; padding: 28px 40px 40px; }
+  .overlay.open { display: block; }
+  .overlay h2 { font-family: var(--cond); font-weight: 600; font-size: 22px; color: var(--muted); margin: 22px 0 10px; }
+  .overlay .close { position: fixed; top: 18px; right: 22px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .tile { display: flex; gap: 12px; align-items: center; text-align: left; padding: 16px; border-radius: 10px; border: 1px solid var(--plate-edge); background: var(--plate); font-family: var(--cond); font-weight: 600; font-size: 24px; }
+  .tile .dot { width: 14px; height: 40px; border-radius: 4px; }
+  .tile[aria-current="true"] { border-color: var(--amber); }
+  .search-in { width: min(720px, 100%); font-size: 26px; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--plate-edge); background: #12171a; }
+  .results { margin-top: 16px; display: grid; gap: 6px; max-width: 900px; }
+  .res { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 8px; background: var(--plate); border: 1px solid transparent; text-align: left; }
+  .res:hover { border-color: var(--amber); }
+  .res .t { font-family: var(--cond); font-weight: 600; font-size: 24px; }
+  .res .w { color: var(--muted); font-size: 16px; }
+  .notes { max-width: 760px; display: grid; gap: 8px; }
+  .note { display: grid; grid-template-columns: minmax(160px, 1fr) 1.4fr; gap: 16px; padding: 12px 16px; background: var(--plate); border-radius: 8px; font-size: 20px; }
+  .note b { font-family: var(--cond); font-weight: 600; color: var(--muted); }
+  .empty-msg { color: var(--muted); font-size: 20px; padding: 40px; text-align: center; }
+  @media (max-width: 1100px) { .who .name { font-size: 24px; } .seg button { padding: 8px 10px; font-size: 17px; } }
+</style>
+</head>
+<body>
+<header>
+  <button class="who" id="who" title="Change aircraft">
+    <span class="bar"></span>
+    <span><div class="name" id="pname">Loading…</div><div class="sim" id="psim"></div></span>
+  </button>
+  <div class="seg" id="devices"></div>
+  <span class="grow"></span>
+  <div class="seg" id="layers"></div>
+  <button class="icon-btn" id="searchBtn" title="Find a function">Find</button>
+  <button class="icon-btn" id="notesBtn" title="Notes for this aircraft">Notes</button>
+  <a class="icon-btn" id="editBtn" title="Edit this aircraft">Edit</a>
+  <span class="live" id="live"><i></i><span>Live</span></span>
+</header>
+<div class="offline-bar" id="offlineBar">Can’t reach HiTech Control Map on your PC. Showing the last saved labels. Check that the app is running and that this address still matches the one in the editor.</div>
+<main><div id="stage" class="stage-host"></div></main>
+
+<div class="overlay" id="pickO">
+  <button class="icon-btn close" data-close>Close</button>
+  <div id="pickList"></div>
+</div>
+<div class="overlay" id="searchO">
+  <button class="icon-btn close" data-close>Close</button>
+  <input class="search-in" id="q" placeholder="Find a function, e.g. airbrake" autocomplete="off">
+  <div class="results" id="results"></div>
+</div>
+<div class="overlay" id="notesO">
+  <button class="icon-btn close" data-close>Close</button>
+  <h2 id="notesTitle">Notes</h2>
+  <div class="notes" id="notesList"></div>
+</div>
+<script type="module" src="viewer.js"></script>
+</body>
+</html>

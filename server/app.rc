@@ -1,0 +1,23 @@
+1 ICON "app.ico"
+1 VERSIONINFO
+FILEVERSION 2,7,0,0
+PRODUCTVERSION 2,7,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904b0"
+    BEGIN
+      VALUE "CompanyName", "HiTech Solutions"
+      VALUE "FileDescription", "HiTech Control Map"
+      VALUE "FileVersion", "2.7.0"
+      VALUE "ProductName", "HiTech Control Map"
+      VALUE "ProductVersion", "2.7.0"
+      VALUE "OriginalFilename", "HiTech Control Map.exe"
+      VALUE "LegalCopyright", "HiTech Solutions"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1200
+  END
+END
